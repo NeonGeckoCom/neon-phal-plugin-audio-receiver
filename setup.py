@@ -57,7 +57,7 @@ PLUGIN_ENTRY_POINT = "neon-phal-plugin-audio-receiver=neon_phal_plugin_audio_rec
 setup(
     name="ovos-PHAL-plugin-system",
     version=get_version(),
-    description="A plugin for OpenVoiceOS hardware abstraction layer",
+    description="A plugin for OVOS/NEON that allows the user to control the audio receiver options by voice command.",
     long_description=get_description(),
     long_description_content_type="text/markdown",
     url="https://github.com/mikejgray/neon-phal-plugin-audio-receiver",
