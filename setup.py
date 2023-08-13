@@ -55,7 +55,7 @@ def get_description():
 
 PLUGIN_ENTRY_POINT = "neon-phal-plugin-audio-receiver=neon_phal_plugin_audio_receiver:AudioReceiver"
 setup(
-    name="ovos-PHAL-plugin-system",
+    name="neon-phal-plugin-audio-receiver",
     version=get_version(),
     description="A plugin for OVOS/NEON that allows the user to control the audio receiver options by voice command.",
     long_description=get_description(),
