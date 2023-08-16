@@ -8,8 +8,8 @@ from neon_phal_plugin_audio_receiver.utils import (
 
 
 class AudioReceiver(PHALPlugin):
-    def __init__(self, bus=None, config=None, *args, **kwargs):
-        super.__init__(bus, config, *args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.bus.on("neon.phal.plugin.audio.receiver.set.uxplay.name", self.handle_set_uxplay_name)
         self.bus.on("neon.phal.plugin.audio.receiver.set.raspotify.name", self.handle_set_raspotify_name)
         self.bus.on("neon.phal.plugin.audio.receiver.pair.bluetooth", self.handle_pair_bluetooth)
