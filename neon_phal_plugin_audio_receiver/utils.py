@@ -181,7 +181,7 @@ def auto_pair_bluetooth(timeout: int = 60) -> None:
 
 
 def auto_pair_kdeconnect(timeout: int = 30) -> None:
-    subprocess.run(f"sudo /usr/local/bin/autopair-kdeconnect.sh {timeout}", check=True)
+    subprocess.run(f"/usr/local/bin/autopair-kdeconnect.sh {timeout}", check=True)
 
 
 def get_service_status(service_name: str) -> bool:
