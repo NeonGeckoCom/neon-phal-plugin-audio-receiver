@@ -3,6 +3,7 @@ from neon_phal_plugin_audio_receiver.utils import (
     set_uxplay_device_name,
     set_raspotify_device_name,
     auto_pair_bluetooth,
+    auto_pair_kdeconnect,
     interact_with_service,
 )
 
@@ -37,7 +38,7 @@ class AudioReceiver(PHALPlugin):
     def handle_pair_kdeconnect(self, message):
         timeout = message.data.get("timeout", 30)
         self.log.info(f"Pairing kdeconnect for {timeout} seconds")
-        auto_pair_bluetooth(timeout)
+        auto_pair_kdeconnect(timeout)
 
     def handle_disable_service(self, message):
         service = message.data.get("service")
