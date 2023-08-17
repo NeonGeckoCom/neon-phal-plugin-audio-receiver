@@ -177,11 +177,11 @@ def set_uxplay_device_name(name: str, service_file_path: Optional[str] = None) -
 
 
 def auto_pair_bluetooth(timeout: int = 60) -> None:
-    subprocess.run(f"sudo /usr/local/bin/autopair-bluetooth.sh {timeout}", check=True)
+    subprocess.run(["sudo", "/usr/local/bin/autopair-bluetooth.sh", str(timeout)], check=True)
 
 
 def auto_pair_kdeconnect(timeout: int = 30) -> None:
-    subprocess.run(f"/usr/local/bin/autopair-kdeconnect.sh {timeout}", check=True)
+    subprocess.run(["/usr/local/bin/autopair-kdeconnect.sh", str(timeout)], check=True)
 
 
 def get_service_status(service_name: str) -> bool:
