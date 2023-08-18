@@ -183,14 +183,14 @@ def auto_pair_bluetooth(timeout: int = 60) -> None:
     Args:
         timeout (int): The duration for which to run the autopairing, in seconds.
     """
-    try:
-        result = subprocess.run(f"/usr/local/bin/autopair-bluetooth.sh {timeout}", check=True)
-        if result.stdout:
-            LOG.info(result.stdout.strip())
-        if result.stderr:
-            LOG.error(result.stderr.strip())
-    except subprocess.CalledProcessError as err:
-        LOG.error(f"autopair-bluetooth.sh script failed with error: {err}")
+    with subprocess.Popen(
+        ["/usr/local/bin/autopair-bluetooth.sh", timeout], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+    ) as process:
+        out, err = process.communicate()
+        if out:
+            LOG.info(out.strip())
+        if err:
+            LOG.error(err.strip())
 
 
 def auto_pair_kdeconnect(timeout: int = 30) -> None:
