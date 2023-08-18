@@ -207,7 +207,7 @@ def auto_pair_kdeconnect(timeout: int = 30, user: str = "neon") -> None:
         [
             "sudo",
             "-u",
-            "neon",
+            user,
             f'DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u {user})/bus"',
             "/usr/local/bin/autopair-kdeconnect.sh",
             str(timeout),
