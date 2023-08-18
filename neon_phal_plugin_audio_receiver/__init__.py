@@ -22,13 +22,13 @@ class AudioReceiver(PHALPlugin):
 
     def handle_set_uxplay_name(self, message):
         self.log.debug(message.data)
-        new_name = message.data.get("new_name", "uxplay")
+        new_name = message.data.get("name", "uxplay")
         self.log.info(f"Setting uxplay device name to {new_name}")
         set_uxplay_device_name(new_name)
 
     def handle_set_raspotify_name(self, message):
         self.log.debug(message.data)
-        new_name = message.data.get("new_name", "Neon Mark 2")
+        new_name = message.data.get("name", "Neon Mark 2")
         self.log.info(f"Setting raspotify device name to {new_name}")
         set_raspotify_device_name(new_name)
 
