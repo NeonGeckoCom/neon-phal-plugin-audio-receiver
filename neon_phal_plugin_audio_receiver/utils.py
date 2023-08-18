@@ -1,7 +1,7 @@
 import os
 import subprocess
-import time
 from typing import List, Optional
+from ovos_utils.log import LOG
 
 
 def read_file(file_path: str) -> List[str]:
@@ -183,7 +183,14 @@ def auto_pair_bluetooth(timeout: int = 60) -> None:
     Args:
         timeout (int): The duration for which to run the autopairing, in seconds.
     """
-    subprocess.run(f"/usr/local/bin/autopair-bluetooth.sh {timeout}", check=True)
+    try:
+        result = subprocess.run(f"/usr/local/bin/autopair-bluetooth.sh {timeout}", check=True)
+        if result.stdout:
+            LOG.info(result.stdout.strip())
+        if result.stderr:
+            LOG.error(result.stderr.strip())
+    except subprocess.CalledProcessError as err:
+        LOG.error(f"autopair-bluetooth.sh script failed with error: {err}")
 
 
 def auto_pair_kdeconnect(timeout: int = 30) -> None:
@@ -193,8 +200,17 @@ def auto_pair_kdeconnect(timeout: int = 30) -> None:
     Args:
         timeout (int): The duration for which to run the autopairing, in seconds.
     """
-    with open("/dev/null", "w") as fnull:
-        subprocess.Popen(["/usr/local/bin/autopair-kdeconnect.sh", str(timeout)], stdout=fnull, stderr=fnull)
+    with subprocess.Popen(
+        ["/usr/local/bin/autopair-kdeconnect.sh", str(timeout)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    ) as process:
+        out, err = process.communicate()
+        if out:
+            LOG.info(out.strip())
+        if err:
+            LOG.error(err.strip())
 
 
 def get_service_status(service_name: str) -> bool:
