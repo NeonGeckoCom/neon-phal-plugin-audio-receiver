@@ -184,7 +184,10 @@ def auto_pair_bluetooth(timeout: int = 60) -> None:
         timeout (int): The duration for which to run the autopairing, in seconds.
     """
     with subprocess.Popen(
-        ["/usr/local/bin/autopair-bluetooth.sh", timeout], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+        ["/usr/local/bin/autopair-bluetooth.sh", str(timeout)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
     ) as process:
         out, err = process.communicate()
         if out:
