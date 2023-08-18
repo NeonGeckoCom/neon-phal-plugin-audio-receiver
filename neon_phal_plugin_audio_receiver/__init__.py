@@ -5,6 +5,7 @@ from neon_phal_plugin_audio_receiver.utils import (
     auto_pair_bluetooth,
     auto_pair_kdeconnect,
     interact_with_service,
+    alphanumeric_string,
 )
 
 
@@ -22,13 +23,13 @@ class AudioReceiver(PHALPlugin):
 
     def handle_set_uxplay_name(self, message):
         self.log.debug(message.data)
-        new_name = message.data.get("name", "uxplay")
+        new_name = alphanumeric_string(message.data.get("name", "uxplay").replace(" ", ""))
         self.log.info(f"Setting uxplay device name to {new_name}")
         set_uxplay_device_name(new_name)
 
     def handle_set_raspotify_name(self, message):
         self.log.debug(message.data)
-        new_name = message.data.get("name", "Neon Mark 2")
+        new_name = alphanumeric_string(message.data.get("name", "Neon Mark 2").replace(" ", ""))
         self.log.info(f"Setting raspotify device name to {new_name}")
         set_raspotify_device_name(new_name)
 

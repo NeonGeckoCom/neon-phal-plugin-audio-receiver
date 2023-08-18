@@ -228,3 +228,8 @@ def get_service_status(service_name: str) -> bool:
     # Check needs to be false because services that aren't running return non-0 codes
     result = subprocess.call(["systemctl", "is-active", "--quiet", normalize_service_name(service_name)])
     return True if result == 0 else False
+
+
+def alphanumeric_string(string: str) -> str:
+    """Return a string with only alphanumeric characters."""
+    return "".join([char for char in string if char.isalnum() or char.isspace()]).strip()
