@@ -196,7 +196,7 @@ def auto_pair_bluetooth(timeout: int = 60) -> None:
             LOG.error(err.strip())
 
 
-def auto_pair_kdeconnect(timeout: int = 30) -> None:
+def auto_pair_kdeconnect(timeout: int = 30, user: str = "neon") -> None:
     """
     Run the autopair-kdeconnect.sh script to automatically pair devices via KDE Connect.
 
@@ -204,7 +204,14 @@ def auto_pair_kdeconnect(timeout: int = 30) -> None:
         timeout (int): The duration for which to run the autopairing, in seconds.
     """
     with subprocess.Popen(
-        ["/usr/local/bin/autopair-kdeconnect.sh", str(timeout)],
+        [
+            "sudo",
+            "-u",
+            "neon",
+            f'DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u {user})/bus"',
+            "/usr/local/bin/autopair-kdeconnect.sh",
+            str(timeout),
+        ],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
