@@ -27,7 +27,7 @@ jobs:
           pip install . pytest
       - name: Unit Tests
         run: |
-          pytest tests/--doctest-modules --junitxml=tests/unit-test-results.xml
+          pytest tests/ --doctest-modules --junitxml=tests/unit-test-results.xml
       - name: Upload Unit test results
         uses: actions/upload-artifact@v2
         with:
