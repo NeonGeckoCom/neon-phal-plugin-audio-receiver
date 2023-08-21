@@ -60,7 +60,7 @@ setup(
     description="A plugin for OVOS/NEON that allows the user to control the audio receiver options by voice command.",
     long_description=get_description(),
     long_description_content_type="text/markdown",
-    url="https://github.com/mikejgray/neon-phal-plugin-audio-receiver",
+    url="https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver",
     author="mikejgray",
     author_email="mike@graywind.org",
     license="Apache-2.0",
