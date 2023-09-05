@@ -63,7 +63,7 @@ setup(
     url="https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver",
     author="mikejgray",
     author_email="mike@graywind.org",
-    license="Apache-2.0",
+    license='BSD-3',
     packages=["neon_phal_plugin_audio_receiver"],
     package_data={"": package_files("neon_phal_plugin_audio_receiver")},
     install_requires=required("requirements.txt"),
