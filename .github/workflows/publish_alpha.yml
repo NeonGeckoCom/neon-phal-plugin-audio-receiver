@@ -10,7 +10,7 @@ on:
       - 'test/**'
       - '.github/**'
       - '.gitignore'
-      - 'LICENSE'
+      - 'LICENSE.md'
       - 'CHANGELOG.md'
       - 'MANIFEST.in'
       - 'README.md'
