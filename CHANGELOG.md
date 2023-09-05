@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.3a1](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/tree/0.0.3a1) (2023-09-05)
+
+[Full Changelog](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/compare/0.0.2a1...0.0.3a1)
+
+**Merged pull requests:**
+
+- Replace Apache2 license with BSD-3 [\#4](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/4) ([NeonDaniel](https://github.com/NeonDaniel))
+- Remove duplicated \(and broken\) alpha build workflow [\#3](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/3) ([NeonDaniel](https://github.com/NeonDaniel))
+
 ## [0.0.2a1](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/tree/0.0.2a1) (2023-08-21)
 
 [Full Changelog](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/compare/61f222abec76ba7ab1d5c646f4974136b97243c0...0.0.2a1)
