@@ -48,22 +48,22 @@ def required(requirements_file):
 
 
 def get_description():
-    with open(os.path.join(BASEDIR, "readme.md"), "r") as f:
+    with open(os.path.join(BASEDIR, "README.md"), "r") as f:
         long_description = f.read()
     return long_description
 
 
 PLUGIN_ENTRY_POINT = "neon-phal-plugin-audio-receiver=neon_phal_plugin_audio_receiver:AudioReceiver"
 setup(
-    name="ovos-PHAL-plugin-system",
+    name="neon-phal-plugin-audio-receiver",
     version=get_version(),
-    description="A plugin for OpenVoiceOS hardware abstraction layer",
+    description="A plugin for OVOS/NEON that allows the user to control the audio receiver options by voice command.",
     long_description=get_description(),
     long_description_content_type="text/markdown",
-    url="https://github.com/mikejgray/neon-phal-plugin-audio-receiver",
+    url="https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver",
     author="mikejgray",
     author_email="mike@graywind.org",
-    license="Apache-2.0",
+    license='BSD-3',
     packages=["neon_phal_plugin_audio_receiver"],
     package_data={"": package_files("neon_phal_plugin_audio_receiver")},
     install_requires=required("requirements.txt"),

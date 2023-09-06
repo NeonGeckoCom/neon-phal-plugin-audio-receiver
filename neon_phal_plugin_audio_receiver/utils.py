@@ -1,7 +1,7 @@
 import os
 import subprocess
-import time
 from typing import List, Optional
+from ovos_utils.log import LOG
 
 
 def read_file(file_path: str) -> List[str]:
@@ -177,13 +177,50 @@ def set_uxplay_device_name(name: str, service_file_path: Optional[str] = None) -
 
 
 def auto_pair_bluetooth(timeout: int = 60) -> None:
-    subprocess.run(f"/usr/local/bin/bluetooth-agent.sh {timeout}", check=True)
+    """
+    Run the autopair-bluetooth.sh script to automatically pair devices via Bluetooth.
+
+    Args:
+        timeout (int): The duration for which to run the autopairing, in seconds.
+    """
+    with subprocess.Popen(
+        ["/usr/local/bin/autopair-bluetooth.sh", str(timeout)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    ) as process:
+        out, err = process.communicate()
+        if out:
+            LOG.info(out.strip())
+        if err:
+            LOG.error(err.strip())
 
 
-def auto_pair_kdeconnect(timeout: int = 30) -> None:
-    interact_with_service("pair-kdeconnect", "start")
-    time.sleep(timeout)
-    interact_with_service("pair-kdeconnect", "stop")
+def auto_pair_kdeconnect(timeout: int = 30, user: str = "neon") -> None:
+    """
+    Run the autopair-kdeconnect.sh script to automatically pair devices via KDE Connect.
+
+    Args:
+        timeout (int): The duration for which to run the autopairing, in seconds.
+    """
+    with subprocess.Popen(
+        [
+            "sudo",
+            "-u",
+            user,
+            f'DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u {user})/bus"',
+            "/usr/local/bin/autopair-kdeconnect.sh",
+            str(timeout),
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    ) as process:
+        out, err = process.communicate()
+        if out:
+            LOG.info(out.strip())
+        if err:
+            LOG.error(err.strip())
 
 
 def get_service_status(service_name: str) -> bool:
@@ -191,3 +228,8 @@ def get_service_status(service_name: str) -> bool:
     # Check needs to be false because services that aren't running return non-0 codes
     result = subprocess.call(["systemctl", "is-active", "--quiet", normalize_service_name(service_name)])
     return True if result == 0 else False
+
+
+def alphanumeric_string(string: str) -> str:
+    """Return a string with only alphanumeric characters."""
+    return "".join([char for char in string if char.isalnum() or char.isspace()]).strip()
