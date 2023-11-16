@@ -1,21 +1,13 @@
 # Changelog
 
-## [0.0.3a1](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/tree/0.0.3a1) (2023-09-05)
+## [0.0.4a1](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/tree/0.0.4a1) (2023-11-16)
 
-[Full Changelog](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/compare/0.0.2a1...0.0.3a1)
-
-**Merged pull requests:**
-
-- Replace Apache2 license with BSD-3 [\#4](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/4) ([NeonDaniel](https://github.com/NeonDaniel))
-- Remove duplicated \(and broken\) alpha build workflow [\#3](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/3) ([NeonDaniel](https://github.com/NeonDaniel))
-
-## [0.0.2a1](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/tree/0.0.2a1) (2023-08-21)
-
-[Full Changelog](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/compare/61f222abec76ba7ab1d5c646f4974136b97243c0...0.0.2a1)
+[Full Changelog](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/compare/0.0.3...0.0.4a1)
 
 **Merged pull requests:**
 
-- Add GitHub Automation [\#1](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/1) ([NeonDaniel](https://github.com/NeonDaniel))
+- fix: raspotify rename [\#6](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/6) ([mikejgray](https://github.com/mikejgray))
+- 0.0.3 [\#5](https://github.com/NeonGeckoCom/neon-phal-plugin-audio-receiver/pull/5) ([github-actions[bot]](https://github.com/apps/github-actions))
 
 
 
