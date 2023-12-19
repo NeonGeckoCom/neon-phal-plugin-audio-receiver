@@ -155,6 +155,7 @@ def set_raspotify_device_name(name: str, config_path: str = "/etc/raspotify/conf
         config_path (str, optional): The path to the Raspotify configuration file. Defaults to "/etc/raspotify/conf".
     """
     set_config_key_value(config_path, "LIBRESPOT_NAME", f'"{name}"')
+    interact_with_service("raspotify", "restart")
 
 
 def set_uxplay_device_name(name: str, service_file_path: Optional[str] = None) -> bool:

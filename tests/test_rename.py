@@ -50,7 +50,8 @@ def test_set_raspotify_device_name(tmpdir):
     file_path = tmpdir.join("raspotify.conf")
     file_path.write('LIBRESPOT_NAME="Old Name"\n')
 
-    set_raspotify_device_name("New Name", file_path.strpath)
+    with patch("subprocess.run", return_value=Mock(returncode=0)):
+        set_raspotify_device_name("New Name", file_path.strpath)
 
     with open(file_path.strpath, "r", encoding="utf-8") as f:
         content = f.readlines()
